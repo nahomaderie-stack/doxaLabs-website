@@ -1,44 +1,56 @@
-
-import React from 'react';
 import './Hero.css';
 import { useEffect, useState } from 'react';
 import bgImage from '../assets/Background/HeroImageC-2.png';
 
-function Hero() {
-  const words = ['Connect', 'Build', 'Market', 'Grow', 'Scale'];
+const words = ['Connect', 'Build', 'Market', 'Grow', 'Scale'];
 
+function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [typedWord, setTypedWord] = useState('');
+  const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
+    // Start typing smoothly as the curtain opens
+    const startTimer = setTimeout(() => {
+      setIsStarted(true);
+    }, 2000);
+
+    return () => clearTimeout(startTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!isStarted) return;
+
     const currentWord = words[wordIndex];
 
-    const typingSpeed = isDeleting ? 100 : 150;
+    // Pause when full word is typed
+    if (!isDeleting && charIndex === currentWord.length) {
+      const pauseTimer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+      return () => clearTimeout(pauseTimer);
+    }
 
+    // Pause briefly when word is fully deleted, then move to next word
+    if (isDeleting && charIndex === 0) {
+      const nextWordTimer = setTimeout(() => {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+      }, 400);
+      return () => clearTimeout(nextWordTimer);
+    }
+
+    // Typing and deleting step speed
+    const typingSpeed = isDeleting ? 60 : 120;
     const timer = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing
-        setTypedWord(currentWord.slice(0, typedWord.length + 1));
-
-        // Pause when word is complete
-        if (typedWord === currentWord) {
-          setIsDeleting(true);
-        }
-      } else {
-        // Deleting
-        setTypedWord(currentWord.slice(0, typedWord.length - 1));
-
-        // Move to next word
-        if (typedWord === '') {
-          setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, typedWord === currentWord && !isDeleting ? 1500 : typingSpeed);
+      setCharIndex((prev) => (isDeleting ? prev - 1 : prev + 1));
+    }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [typedWord, isDeleting, wordIndex]);
+  }, [charIndex, isDeleting, wordIndex, isStarted]);
+
+  const displayedWord = words[wordIndex].substring(0, charIndex);
 
   return (
     <section id="home">
@@ -49,20 +61,20 @@ function Hero() {
         <h1>
           We create brands <br /> that{' '}
           <span className="hero-highlight">
-            {typedWord}
+            {displayedWord}
             <span className="typing-cursor">|</span>
           </span>
         </h1>
 
         <p>
-          We build powerful digital experiences that help businesses
-          grow, connect with their audiences, and stand out in an ever-evolving
+          We build powerful digital experiences that help businesses grow,
+          connect with their audiences, and stand out in an ever-evolving
           digital world. From strategy and design to development and digital
           innovation
         </p>
 
         <div className="hero-buttons">
-          <a href="#ourservices">
+          <a href="/#ourservices">
             <button className="discover-btn">Discover Us</button>
           </a>
 
@@ -76,5 +88,3 @@ function Hero() {
 }
 
 export default Hero;
-
-

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/Logos/DoxaLabs-Logo-3F.png';
+
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,17 +20,39 @@ function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (id) => (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', `/#${id}`);
+      }
+    }
+  };
+
   return (
     <header className={`container ${isScrolled ? 'scrolled' : ''}`}>
-      <div className='Logo-container'>
-        <Link to="/"><img src={logo} alt="DoxaLabs Logo" /></Link>
+      <div className="Logo-container">
+        <Link to="/">
+          <img src={logo} alt="DoxaLabs Logo" />
+        </Link>
       </div>
 
       <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#ourservices">Services</a>
-        <a href="#footer">Contact</a>
+        <a href="/#home" onClick={handleNavClick('home')}>
+          Home
+        </a>
+        <a href="/#about" onClick={handleNavClick('about')}>
+          About Us
+        </a>
+        <a href="/#ourservices" onClick={handleNavClick('ourservices')}>
+          Services
+        </a>
+        <a href="/#contact" onClick={handleNavClick('contact')}>
+          Contact
+        </a>
       </nav>
 
       <div>

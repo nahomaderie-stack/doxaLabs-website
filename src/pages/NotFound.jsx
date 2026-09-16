@@ -10,21 +10,23 @@ function NotFound() {
         <p className="nf-label">Error</p>
 
         <h1 className="nf-code">
-          <span aria-hidden="true" className="nf-glitch" data-text="404">404</span>
+          <span aria-hidden="true" className="nf-glitch" data-text="404">
+            404
+          </span>
         </h1>
 
         <h2 className="nf-title">Page not found</h2>
 
         <p className="nf-description">
-          The page you're looking for doesn't exist or has been moved.
-          Let's get you back on track.
+          The page you're looking for doesn't exist or has been moved. Let's get
+          you back on track.
         </p>
 
         <div className="nf-actions">
           <Link to="/" className="nf-btn-primary">
             ← Back to Home
           </Link>
-          <a href="#contact" className="nf-btn-secondary">
+          <a href="tel:+251973387550" className="nf-btn-secondary">
             Contact Us
           </a>
         </div>

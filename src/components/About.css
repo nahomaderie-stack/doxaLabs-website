@@ -31,16 +31,22 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* Left Image Section - Shifts Out to Pop Out of Card */
+/* Left Image Section */
 .about-image-wrapper {
   flex: 1.1;
   position: relative;
   left: -20px;
-  /* Slight offset for overlapping visual effect */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 25px 0px 10px 20px;
+  /* scroll animation initial state */
+  opacity: 0;
+  transform: translateX(-60px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
 .about-dashboard-img {
@@ -60,6 +66,13 @@
   flex-direction: column;
   justify-content: center;
   color: #ffffff;
+  /* scroll animation initial state */
+  opacity: 0;
+  transform: translateX(60px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+  will-change: opacity, transform;
 }
 
 .about-content h2 {
@@ -88,6 +101,7 @@
     left: 0;
     width: 100%;
     padding: 20px;
+    transform: translateY(40px);
   }
 
   .about-dashboard-img {
@@ -96,6 +110,7 @@
 
   .about-content {
     padding: 20px 30px 40px 30px;
+    transform: translateY(30px);
   }
 
   .about-content h2 {
@@ -104,34 +119,21 @@
 }
 
 /* =========================
-   SCROLL ANIMATION
+   SCROLL ANIMATION — visible states
 ========================= */
 
-.about-image-wrapper {
-  opacity: 1;
-  transform: translateX(-80px);
-  transition:
-    opacity 0.9s ease,
-    transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.about-content {
-  opacity: 1;
-  transform: translateX(80px);
-  transition:
-    opacity 0.9s ease 0.15s,
-    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-}
-
-
-/* When section enters viewport */
-
-.about-section.is-visible .about-image-wrapper {
+.about-card.reveal-visible .about-image-wrapper {
   opacity: 1;
   transform: translateX(-20px);
 }
 
-.about-section.is-visible .about-content {
+@media (max-width: 900px) {
+  .about-card.reveal-visible .about-image-wrapper {
+    transform: translateX(0);
+  }
+}
+
+.about-card.reveal-visible .about-content {
   opacity: 1;
   transform: translateX(0);
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Hero2.css';
 
 function Hero2() {
@@ -24,7 +23,7 @@ function Hero2() {
         </p>
 
         <div className="hero-actions">
-          <a href="#discover" className="btn-primary">
+          <a href="/#ourservices" className="btn-primary">
             <svg
               className="btn-icon"
               fill="none"
@@ -42,7 +41,7 @@ function Hero2() {
             Discover Us
           </a>
 
-          <a href="#book-call" className="btn-secondary">
+          <a href="tel:+251973387550" className="btn-secondary">
             Book a Call
           </a>
         </div>

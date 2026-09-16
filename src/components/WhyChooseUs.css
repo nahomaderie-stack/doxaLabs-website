@@ -85,9 +85,39 @@
   border-right: 1px solid #393441;
   border-bottom: 1px solid #393441;
 
+  opacity: 0;
+  transform: translateY(24px);
+
   transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     background 0.3s ease,
     border-color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.why-choose-grid.reveal-visible .why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-choose-grid.reveal-visible .why-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.why-choose-grid.reveal-visible .why-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.why-choose-grid.reveal-visible .why-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.why-choose-grid.reveal-visible .why-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.why-choose-grid.reveal-visible .why-card:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.why-choose-grid.reveal-visible .why-card:nth-child(6) {
+  transition-delay: 0.6s;
 }
 
 /* Remove the old :first-child left border — now handled by grid wrapper */
