@@ -12,10 +12,13 @@
   justify-content: center;
   text-align: center;
   padding: var(--spacing-2xl) var(--spacing-sm);
+  padding-top: calc(var(--spacing-2xl) + 200px);
+  /* account for fixed header */
 
   /* Crucial changes for image visibility & background layout */
   background-size: cover;
-  background-position: top center; /* Prevents upper arch from being cropped */
+  background-position: top center;
+  /* Prevents upper arch from being cropped */
   background-repeat: no-repeat;
   box-sizing: border-box;
 }
@@ -26,13 +29,33 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
   color: var(--color-text);
-  margin-top: 200px;
 }
 
 .hero-highlight {
   color: var(--color-accent);
   font-family: var(--font-family-serif);
   font-style: italic;
+}
+
+.typing-cursor {
+  display: inline-block;
+  margin-left: 3px;
+  font-family: var(--font-family-sans);
+  font-style: normal;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 #home p {
@@ -43,14 +66,15 @@
   line-height: var(--line-height-body);
 }
 
+
 .hero-buttons {
   display: flex;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-lg);
 }
 
-.hero-buttons button:first-child {
-  padding: 8px 40px;
+.discover-btn {
+  padding: 12px 40px;
   background-color: var(--color-primary);
   color: var(--color-text);
   border-radius: var(--radius-full);
@@ -62,7 +86,7 @@
     opacity 0.3s ease;
 }
 
-.hero-buttons button:last-child {
+.call-btn {
   background: none;
   color: var(--color-text);
   padding: 14px 0;
@@ -76,7 +100,47 @@
     opacity 0.3s ease;
 }
 
-.hero-buttons button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+.discover-btn:hover {
+  transform: translateY(-1px);
+  background: var(--color-accent);
+}
+
+.call-btn:hover {
+  transform: translateY(-1px);
+}
+
+
+/* ================================
+   HERO ANIMATIONS
+================================ */
+
+@keyframes fadeInUpHero {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#home h1,
+#home p,
+.hero-buttons {
+  opacity: 0;
+  animation: fadeInUpHero 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+#home h1 {
+  animation-delay: 2.5s;
+}
+
+#home p {
+  animation-delay: 2.6s;
+}
+
+.hero-buttons {
+  animation-delay: 2.7s;
 }

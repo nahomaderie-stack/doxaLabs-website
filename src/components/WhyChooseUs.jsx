@@ -1,9 +1,16 @@
 import './WhyChooseUs.css';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 function WhyChooseUs() {
+  const [headerRef, headerVisible] = useScrollReveal({ threshold: 0.1 });
+  const [gridRef, gridVisible] = useScrollReveal({ threshold: 0.1 });
+
   return (
     <section id="whychooseus" className="why-choose-us">
-      <div className="why-choose-header">
+      <div 
+        ref={headerRef} 
+        className={`why-choose-header reveal-up ${headerVisible ? 'reveal-visible' : ''}`}
+      >
         <p className="section-label">Why Choose Us</p>
 
         <h2>
@@ -18,7 +25,11 @@ function WhyChooseUs() {
         </p>
       </div>
 
-      <div className="why-choose-grid">
+      <div 
+        ref={gridRef} 
+        className={`why-choose-grid reveal-up ${gridVisible ? 'reveal-visible' : ''}`}
+        style={{ transitionDelay: '0.2s' }}
+      >
         <div className="why-card">
           <span className="why-number">01</span>
 

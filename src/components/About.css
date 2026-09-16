@@ -6,10 +6,7 @@
   align-items: center;
   padding: 80px 20px;
   box-sizing: border-box;
-  background-color: #05030a;
-
-  margin-top: 0px; /* Space above this section */
-  margin-bottom: 60px; /* Space below this section */
+  background-color: #0b0713;
 }
 
 /* Glassmorphism Card Container with Grid Lines */
@@ -38,7 +35,8 @@
 .about-image-wrapper {
   flex: 1.1;
   position: relative;
-  left: -20px; /* Slight offset for overlapping visual effect */
+  left: -20px;
+  /* Slight offset for overlapping visual effect */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,4 +101,37 @@
   .about-content h2 {
     font-size: 2rem;
   }
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.about-image-wrapper {
+  opacity: 1;
+  transform: translateX(-80px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-content {
+  opacity: 1;
+  transform: translateX(80px);
+  transition:
+    opacity 0.9s ease 0.15s,
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+
+/* When section enters viewport */
+
+.about-section.is-visible .about-image-wrapper {
+  opacity: 1;
+  transform: translateX(-20px);
+}
+
+.about-section.is-visible .about-content {
+  opacity: 1;
+  transform: translateX(0);
 }

@@ -5,10 +5,10 @@
 .why-choose-us {
   width: 100%;
   padding: 110px 9%;
-  margin: 0 75px 0px;
 
   background: #0b0713;
   color: #ffffff;
+  box-sizing: border-box;
 }
 
 /* ================================
@@ -23,9 +23,9 @@
 .section-label {
   margin: 0 0 18px;
 
-  color: var(--color-primary);
+  color: var(--color-accent);
 
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -65,10 +65,10 @@
   display: grid;
 
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: auto auto;
 
   border-top: 1px solid #393441;
-  border-bottom: 1px solid #393441;
+  border-left: 1px solid #393441;
 }
 
 /* ================================
@@ -78,19 +78,21 @@
 .why-card {
   position: relative;
 
-  min-height: 230px;
+  min-height: 220px;
 
   padding: 28px 25px;
 
   border-right: 1px solid #393441;
+  border-bottom: 1px solid #393441;
 
   transition:
     background 0.3s ease,
     border-color 0.3s ease;
 }
 
+/* Remove the old :first-child left border — now handled by grid wrapper */
 .why-card:first-child {
-  border-left: 1px solid #393441;
+  border-left: none;
 }
 
 .why-card:hover {
@@ -135,14 +137,14 @@
 ================================ */
 
 .why-card p {
-  max-width: 190px;
+  max-width: 260px;
 
   margin: 0;
 
   color: #aaa5b4;
 
-  font-size: 10px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 /* ================================
@@ -152,15 +154,14 @@
 @media (max-width: 900px) {
   .why-choose-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
   }
 
-  .why-card:nth-child(2) {
+  /* In 2-col layout cards 2, 4, 6 are the right edge — remove their right border */
+  .why-card:nth-child(2),
+  .why-card:nth-child(4),
+  .why-card:nth-child(6) {
     border-right: none;
-  }
-
-  .why-card:nth-child(3),
-  .why-card:nth-child(4) {
-    border-top: 1px solid #393441;
   }
 }
 
@@ -175,16 +176,11 @@
 
   .why-choose-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 
-  .why-card,
-  .why-card:first-child {
-    border-left: 1px solid #393441;
-    border-right: 1px solid #393441;
-    border-bottom: 1px solid #393441;
-  }
-
-  .why-card:first-child {
-    border-top: none;
+  /* Single column — only keep left + right border on wrapper */
+  .why-card {
+    border-right: none;
   }
 }

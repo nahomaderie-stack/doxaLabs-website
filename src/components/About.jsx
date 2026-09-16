@@ -1,11 +1,17 @@
 import React from 'react';
 import './About.css';
 import dashboardImg from '../assets/Background/dashboard.png';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 function About() {
+  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
+
   return (
     <section id="about" className="about-section">
-      <div className="about-card">
+      <div
+        ref={ref}
+        className={`about-card reveal-up ${isVisible ? 'reveal-visible' : ''}`}
+      >
         {/* Left Side: Overlapping Dashboard Preview Image */}
         <div className="about-image-wrapper">
           <img

@@ -1,5 +1,6 @@
 import './Footer.css';
 import logo from '../assets/Logos/DoxaLabs-Logo-2T.png';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -7,7 +8,7 @@ function Footer() {
       <div className="footer-main">
         {/* Brand */}
         <div className="footer-brand">
-          <img src={logo} />
+          <img src={logo} alt="DoxaLabs Logo" />
 
           <p>We create brands that connect, build, and grow.</p>
         </div>
@@ -17,8 +18,8 @@ function Footer() {
           <h3>Explore</h3>
 
           <a href="#home">Home</a>
-          <a href="#ourservices">Services</a>
           <a href="#about">About Us</a>
+          <a href="#ourservices">Services</a>
           <a href="#contact">Contact</a>
         </div>
 
@@ -58,8 +59,8 @@ function Footer() {
         <p>© 2026 DoxaLabs. All rights reserved.</p>
 
         <div className="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-and-conditions">Terms & Conditions</Link>
         </div>
       </div>
     </footer>

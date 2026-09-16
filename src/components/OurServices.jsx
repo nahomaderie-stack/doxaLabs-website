@@ -1,9 +1,17 @@
 import './OurServices.css';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
 function OurServices() {
+  const [headerRef, headerVisible] = useScrollReveal({ threshold: 0.1 });
+  const [gridRef, gridVisible] = useScrollReveal({ threshold: 0.1 });
+
   return (
     <section id="ourservices" className="our-services">
       {/* Marketing */}
-      <div className="services-header">
+      <div 
+        ref={headerRef} 
+        className={`services-header reveal-up ${headerVisible ? 'reveal-visible' : ''}`}
+      >
         <h2>Our Services</h2>
         <p>
           Lorem ipsum dolor sit amet, consecteteur adipiscing elit, sed diam
@@ -12,7 +20,11 @@ function OurServices() {
           amet, consecteteur adipiscing elit, sed diam nonummy nibh euismod
         </p>
       </div>
-      <div className="services-grid">
+      <div 
+        ref={gridRef} 
+        className={`services-grid reveal-up ${gridVisible ? 'reveal-visible' : ''}`}
+        style={{ transitionDelay: '0.2s' }}
+      >
         <div className="service-card marketing-card">
           <div className="service-icon">i</div>
           <h3>Marketing</h3>
