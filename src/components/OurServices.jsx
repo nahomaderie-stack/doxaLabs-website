@@ -37,7 +37,7 @@ function OurServices() {
         </div>
 
         {/* Web Development */}
-        <div className="service-card web-card selected">
+        <div className="service-card web-card ">
           <div className="service-icon">i</div>
 
           <h3>Web Development</h3>
