@@ -1,0 +1,118 @@
+/* ================================
+   GET OFFER CTA
+================================ */
+
+.get-offer-cta {
+  width: 100%;
+  min-height: 300px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #0b0713;
+  color: #ffffff;
+
+  text-align: center;
+}
+
+/* ================================
+   CONTENT
+================================ */
+
+.offer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================================
+   HEADING
+================================ */
+
+.offer-content h2 {
+  margin: 0;
+
+  font-size: 52px;
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+}
+
+.offer-content h2 span {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.offer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 38px;
+}
+
+/* ================================
+   PRIMARY BUTTON
+================================ */
+
+.offer-primary-btn {
+  padding: 12px 25px;
+
+  border: 1px solid var(--color-primary);
+  border-radius: 50px;
+
+  background: var(--color-primary);
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.offer-primary-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* ================================
+   SECONDARY BUTTON
+================================ */
+
+.offer-secondary-btn {
+  padding: 12px 25px;
+
+  border: 1px solid var(--color-primary);
+  border-radius: 50px;
+
+  background: transparent;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.offer-secondary-btn:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}

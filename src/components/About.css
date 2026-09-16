@@ -1,0 +1,106 @@
+/* Section Wrapper */
+.about-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  background-color: #05030a;
+
+  margin-top: 0px; /* Space above this section */
+  margin-bottom: 60px; /* Space below this section */
+}
+
+/* Glassmorphism Card Container with Grid Lines */
+.about-card {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(15, 10, 28, 0.6);
+
+  /* Grid Background Effect */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Left Image Section - Shifts Out to Pop Out of Card */
+.about-image-wrapper {
+  flex: 1.1;
+  position: relative;
+  left: -20px; /* Slight offset for overlapping visual effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 0px 10px 20px;
+}
+
+.about-dashboard-img {
+  width: 110%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  object-fit: cover;
+}
+
+/* Right Text Section */
+.about-content {
+  flex: 1;
+  padding: 40px 60px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.about-content h2 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.02em;
+}
+
+.about-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #a1a1aa;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .about-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .about-image-wrapper {
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .about-dashboard-img {
+    width: 100%;
+  }
+
+  .about-content {
+    padding: 20px 30px 40px 30px;
+  }
+
+  .about-content h2 {
+    font-size: 2rem;
+  }
+}

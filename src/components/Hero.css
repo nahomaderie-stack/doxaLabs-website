@@ -1,0 +1,82 @@
+#home {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.hero-image-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-sm);
+
+  /* Crucial changes for image visibility & background layout */
+  background-size: cover;
+  background-position: top center; /* Prevents upper arch from being cropped */
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+
+#home h1 {
+  max-width: 900px;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text);
+  margin-top: 200px;
+}
+
+.hero-highlight {
+  color: var(--color-accent);
+  font-family: var(--font-family-serif);
+  font-style: italic;
+}
+
+#home p {
+  max-width: 600px;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-body);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-body);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.hero-buttons button:first-child {
+  padding: 8px 40px;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.hero-buttons button:last-child {
+  background: none;
+  color: var(--color-text);
+  padding: 14px 0;
+  border-radius: 0;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.hero-buttons button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

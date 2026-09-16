@@ -1,0 +1,141 @@
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+  transform: translateX(-50%);
+  position: fixed;
+  top: 20px;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 0 16px;
+  box-sizing: border-box;
+  z-index: 1000;
+
+  /* Pill Shape & Dark Glassmorphism Effect */
+  background: rgba(12, 6, 28, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid rgba(140, 90, 245, 0.35);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+nav a {
+  position: relative;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--color-text);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.35s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+header > div:first-child a {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-left: 18px;
+}
+
+header button:first-child {
+  margin-right: 0px;
+  padding: 8px 32px;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  transition: opacity 0.35s ease;
+}
+
+header button:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+/* --------------------------------------------------------------------------
+Search Action Button
+-------------------------------------------------------------------------- */
+header.container > div:last-child button {
+  border: none;
+  color: var(--color-text-white, #eef0f2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* header.container > div:last-child button::before {
+  content: '🔍';
+  font-size: 0.95rem;
+  filter: grayscale(1) brightness(1.6);
+  line-height: 1;
+}
+
+header.container > div:last-child button:hover {
+  transform: scale(1.1);
+  opacity: 1;
+} */
+
+/* --------------------------------------------------------------------------
+ 4. Responsive Design -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  header.container {
+    top: 12px;
+    height: 52px;
+    padding: 0 8px;
+  }
+
+  header.container nav {
+    gap: 2px;
+  }
+
+  header.container nav a {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+}
